@@ -16,7 +16,7 @@ Models:
    | --------- | ------------- | ------------------------------------------------------ |
    | `name`    | `string`      | The Name of the Location itself                        |
    | `description`  | `string`      |The Description of the Location |
-   | `location`    | `string`      | The Location coordinates.|
+   | `location`    | `srid=4326`      | The Location coordinates.|
    
    
    
