@@ -1,13 +1,14 @@
-import React, {useState, useEffect, useContext, createContext} from "react";
+import React, {useState, useEffect, useContext, createContext,useReducer} from "react";
 import axios from "axios";
 import {Map, Marker, TileLayer} from "react-leaflet";
 import {Icon} from "leaflet";
 import 'leaflet/dist/leaflet.css';
 import {icon} from "../../App";
-import {useAppValue} from "../../context/AppContext";
+import {useAppValue,AppContext} from "../../context/AppContext";
 
-export default function AppMap() {
-    let [{arr: currArr}] = useAppValue();
+export default function AppMap(props) {
+    console.log(props)
+    let currArr = props.arr
     return (
         <Map center={[30.034102, 31.00307]} zoom={13}>
             <TileLayer
@@ -17,15 +18,15 @@ export default function AppMap() {
 
             {currArr.features.map((store) => (
                 <Marker
-                    key={store.properties.name}
-                    attribution={store.properties.name}
-                    position={[
-                        store.geometry.coordinates[1],
-                        store.geometry.coordinates[0],
-                    ]}
-                    onClick={() => {
-                    }}
-                    icon={icon}
+                key={store.properties.name}
+                attribution={store.properties.name}
+                position={[
+                store.geometry.coordinates[1],
+                store.geometry.coordinates[0],
+            ]}
+                onClick={() => {
+            }}
+                icon={icon}
                 />
             ))}
             )}

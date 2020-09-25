@@ -1,22 +1,23 @@
-import React, {useState, useEffect, useContext, createContext, useReducer, Dispatch} from "react";
+import React, {useState, useEffect, useContext, createContext, useReducer} from "react";
 import axios from "axios";
-import {Map, Marker, TileLayer} from "react-leaflet";
 import {Icon} from "leaflet";
-import {useAppValue, AppProvider} from "./context/AppContext";
+import {useAppValue, AppProvider,AppContext} from "./context/AppContext";
 import LoadingIndicator from './components/Loading/Loading'
 import AppMap from "./components/AppMap/AppMap";
 import {usePromiseTracker, trackPromise} from "react-promise-tracker";
 import 'leaflet/dist/leaflet.css';
 import "./App.css";
 
+
 export const icon = new Icon({
     iconUrl: "/store-svgrepo-com.svg",
     iconSize: [25, 25]
 });
 
+
 const initialState = {
     page: LoadingIndicator,
-    // arr: [],
+    arr: []
 };
 
 function reducer(state, action) {
@@ -28,13 +29,13 @@ function reducer(state, action) {
             return {
                 ...state,
                 page: LoadingIndicator,
-                // arr: []
+                arr: []
             };
         case "loaded":
-            console.log("loaded");
             return {
                 ...state,
                 page: AppMap,
+                arr: action.arr
             };
         default:
             console.log("default");
@@ -42,7 +43,10 @@ function reducer(state, action) {
     }
 }
 
+
 const App = () => {
+    const [state, dispatch] = useAppValue();
+
     useEffect(() => {
         console.log("here");
         axios({
@@ -50,20 +54,19 @@ const App = () => {
             url: `http://localhost:8000/dataset/`,
         }).then((res) => {
             setTimeout(() => {
-                reducer(initialState, {type: "loaded"});
-                console.log("done")
-            }, 2000);
+                dispatch({type: "loaded", arr: res.data});
+                console.log("done");
+            }, 3000);
         }).catch((err) => {
             console.log(err);
         });
     }, []);
 
-    let [{page: Page}] = useAppValue();
+    let Page = state.page;
+    let newArr = state.arr;
 
     return (
-        <div className="App">
-            <Page/>
-        </div>
+            <Page arr={newArr}/>
     );
 };
 
@@ -72,51 +75,3 @@ export default (props) => (
         <App {...props} />
     </AppProvider>
 )
-
-// useEffect(() => {
-//     axios({
-//         method: "get",
-//         url: `http://localhost:8000/dataset/`,
-//     }).then((res) => {
-//         setTimeout(() => {
-//             setallLocations(res.data)
-//         }, 2000);
-//     }).catch((err) => {
-//         console.log(err);
-//     });
-// }, []);
-
-// useEffect(() => {
-//     console.log(allLocations.features)
-// }, [allLocations]);
-//
-//
-// if (allLocations.length <= 0) {
-//     return (
-//         <LoadingIndicator/>
-//     )
-// } else {
-//     return (
-//         <Map center={[30.034102, 31.00307]} zoom={13}>
-//             <TileLayer
-//                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//             />
-//
-//             {allLocations.features.map((store) => (
-//                 <Marker
-//                     key={store.properties.name}
-//                     attribution={store.properties.name}
-//                     position={[
-//                         store.geometry.coordinates[1],
-//                         store.geometry.coordinates[0],
-//                     ]}
-//                     onClick={() => {
-//                     }}
-//                     icon={icon}
-//                 />
-//             ))}
-//             )}
-//         </Map>
-//     )
-// }
