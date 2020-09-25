@@ -1,12 +1,12 @@
 from django.contrib import admin
 from leaflet.admin import LeafletGeoAdmin
-from .models import Inc
+from .models import Shop
 
 
 # Register your models here.
 
-class IncAdmin(LeafletGeoAdmin):
+class ShopAdmin(LeafletGeoAdmin):
     pass
 
 
-admin.site.register(Inc, IncAdmin)
+admin.site.register(Shop, ShopAdmin)
