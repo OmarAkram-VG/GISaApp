@@ -24,15 +24,15 @@ ENV LC_ALL="C.UTF-8"
 ENV LC_CTYPE="C.UTF-8"
 
 
-RUN mkdir /backendgis
-COPY ./backendgis /backendgis
-WORKDIR backendgis
+RUN mkdir -p /usr/src/app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
 COPY requirements.txt requirements.txt
 RUN pip install requirements.txt
 
 RUN set -ex && pipenv install --system --skip-lock
 
-COPY /entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 ENTRYPOINT ["bash", "entrypoint.sh"]
