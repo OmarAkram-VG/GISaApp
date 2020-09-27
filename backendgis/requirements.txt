@@ -1,0 +1,8 @@
+Django
+djangorestframework
+django-leaflet
+django-cors-headers
+api
+gdal
+psycopg2-binary
+psycopg2
