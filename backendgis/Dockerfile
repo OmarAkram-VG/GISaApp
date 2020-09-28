@@ -35,4 +35,5 @@ RUN set -ex && pipenv install --system --skip-lock
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
+
 ENTRYPOINT ["bash", "entrypoint.sh"]

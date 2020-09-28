@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   hello-world:
-    container_name: hello-world
+    container_name: gisfrontend
     build:
       context: .
       dockerfile: Dockerfile

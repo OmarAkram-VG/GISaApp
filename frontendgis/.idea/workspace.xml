@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="600b419e-cfa5-421c-9f6c-81bf94a5e2c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backendgis/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../backendgis/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,8 @@
       <workItem from="1600896154887" duration="1588000" />
       <workItem from="1600898087641" duration="454000" />
       <workItem from="1600899290254" duration="7369000" />
-      <workItem from="1601193035432" duration="3194000" />
+      <workItem from="1601193035432" duration="3280000" />
+      <workItem from="1601263295998" duration="67000" />
     </task>
     <servers />
   </component>
