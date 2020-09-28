@@ -27,7 +27,7 @@ Models:
 
 
 -All Docker Images are fine except for the geodjango image it does not seem to have a fixed behaviour.  
--A GeoJSON file is provided if you want to use it in the DB or import it.
--The DB docker instance has postgis extension enabled it is enabled by the default postgres user.
--The frontend and the backend have different docker files
--docker-compose up for each application.
+-A GeoJSON file is provided if you want to use it in the DB or import it.  
+-The DB docker instance has postgis extension enabled it is enabled by the default postgres user.  
+-The frontend and the backend have different docker files   
+-docker-compose up for each application.  
